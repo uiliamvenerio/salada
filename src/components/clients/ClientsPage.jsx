@@ -58,7 +58,7 @@ export function ClientsPage() {
         <div className="flex flex-wrap items-center justify-between gap-4 p-4">
           <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Clientes</h1>
           <Button onClick={() => setIsAddModalOpen(true)}>
-            Adicionar Cliente
+            Novo Cliente
           </Button>
         </div>
 

@@ -104,12 +104,12 @@ export function RecipesPage() {
     <main className="flex-1 min-w-0 overflow-auto">
       <div className="max-w-[1440px] mx-auto animate-fade-in">
         <div className="flex flex-wrap items-center justify-between gap-4 p-4">
-          <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Recipes</h1>
+          <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Receitas</h1>
           <Button onClick={() => {
             setSelectedRecipe(null);
             setIsModalOpen(true);
           }}>
-            Create Recipe
+            Nova Receita
           </Button>
         </div>
 
@@ -140,7 +140,7 @@ export function RecipesPage() {
               <div className="flex flex-wrap items-center gap-4">
                 <input
                   type="text"
-                  placeholder="Search recipes..."
+                  placeholder="Pesquisar receitas..."
                   value={filters.search}
                   onChange={(e) => setFilters({ ...filters, search: e.target.value })}
                   className="flex-1 min-w-[200px] px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-hover text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/20 focus:border-primary"
