@@ -9,7 +9,7 @@ import clsx from 'clsx';
 const menuItems = [
   { id: 'dashboard', icon: House, text: 'Home' },
   { id: 'clients', icon: UsersThree, text: 'Clients' },
-  { id: 'campaigns', icon: Megaphone, text: 'Campaigns' },
+  { id: 'recipes', icon: Megaphone, text: 'Recipes' },
   { id: 'reporting', icon: ChartPie, text: 'Reporting' }
 ];
 

@@ -3,7 +3,7 @@ import { Card, CardHeader, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { CampaignsList } from './CampaignsList';
 import { CampaignModal } from './CampaignModal';
-import { CampaignStats } from './CampaignStats';
+import { CampaignStats } from './RecipeStats';
 
 const initialCampaigns = [
   {

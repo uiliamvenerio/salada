@@ -4,7 +4,7 @@ import { Header } from './components/ui/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import { ClientsPage } from './components/clients/ClientsPage';
-import { CampaignsPage } from './components/campaigns/CampaignsPage';
+import { RecipesPage } from './components/recipes/RecipesPage';
 import { ReportingPage } from './components/reporting/ReportingPage';
 import { ProfilePage } from './components/profile/ProfilePage';
 import { SettingsPage } from './components/settings/SettingsPage';
@@ -40,8 +40,8 @@ export default function App() {
         return <Dashboard />;
       case 'clients':
         return <ClientsPage />;
-      case 'campaigns':
-        return <CampaignsPage />;
+      case 'recipes':
+        return <RecipesPage />;
       case 'reporting':
         return <ReportingPage />;
       case 'profile':
