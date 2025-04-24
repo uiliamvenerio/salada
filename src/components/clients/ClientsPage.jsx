@@ -8,21 +8,21 @@ import { AddClientModal } from './AddClientModal';
 const initialClients = [
   {
     id: 1,
-    name: 'Alice Freeman',
-    phone: '(11) 98765-4321',
+    name: 'Lar Nossa Senhora dos Navegantes',
+    phone: '(51) 98765-4321',
     address: 'Rua das Flores, 123',
     responsible: 'João Silva',
     notes: 'Cliente preferencial',
-    avatar: 'https://cdn.usegalileo.ai/stability/117a7a12-7704-4917-9139-4a3f76c42e78.png'
+    avatar: 'https://grupolibano.com.br/wp-content/uploads/2023/12/lar-idosos-alto-de-pinheiros-fachada.png'
   },
   {
     id: 2,
-    name: 'Bob Smith',
-    phone: '(11) 91234-5678',
+    name: 'Escolinha Amigos do Mar',
+    phone: '(51) 91234-5678',
     address: 'Av. Principal, 456',
     responsible: 'Maria Santos',
     notes: 'Atendimento especial',
-    avatar: 'https://cdn.usegalileo.ai/stability/d4e7d763-28f3-4af2-bc57-a26db12c522b.png'
+    avatar: 'https://images.tcdn.com.br/img/img_prod/1271663/180_toque_e_sinta_meus_amigos_do_mar_1165_1_5352258a8dad609f58c2c1bf309d95a2.jpg'
   }
 ];
 
