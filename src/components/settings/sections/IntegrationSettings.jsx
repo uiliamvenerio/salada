@@ -6,7 +6,7 @@ const integrations = [
   {
     id: 'hubspot',
     name: 'HubSpot',
-    description: 'Sync contacts, deals, and marketing campaigns',
+    description: 'Sync contacts, deals, and marketing recipes',
     connected: true,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">

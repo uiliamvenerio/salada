@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '../ui/Card';
 import clsx from 'clsx';
 
-export function CampaignStats({ title, value, trend, description }) {
+export function RecipeStats({ title, value, trend, description }) {
   const isPositive = trend.startsWith('+');
 
   return (

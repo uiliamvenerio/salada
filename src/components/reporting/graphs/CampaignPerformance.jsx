@@ -24,7 +24,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-export function CampaignPerformance() {
+export function RecipePerformance() {
   return (
     <div className="h-[300px] mt-4">
       <ResponsiveContainer width="100%" height="100%">

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const campaignSchema = new mongoose.Schema({
+const recipeSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -52,11 +52,11 @@ const campaignSchema = new mongoose.Schema({
   }
 });
 
-campaignSchema.pre('save', function(next) {
+recipeSchema.pre('save', function(next) {
   this.updatedAt = new Date();
   next();
 });
 
-const Campaign = mongoose.model('Campaign', campaignSchema);
+const Recipe = mongoose.model('Recipe', recipeSchema);
 
-export default Campaign;
+export default Recipe;

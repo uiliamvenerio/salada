@@ -12,8 +12,8 @@ const notifications = [
   },
   {
     id: 2,
-    title: 'Campaign completed',
-    description: 'Summer sale campaign has ended',
+    title: 'Recipe completed',
+    description: 'Summer sale recipe has ended',
     time: '1 hour ago',
     unread: true,
   },

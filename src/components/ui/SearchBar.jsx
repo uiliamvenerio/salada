@@ -9,7 +9,7 @@ export function SearchBar() {
     { type: 'client', name: 'Alice Freeman', path: '/clients/1' },
     { type: 'client', name: 'Bob Smith', path: '/clients/2' },
     { type: 'product', name: 'Premium Plan', path: '/products/1' },
-    { type: 'campaign', name: 'Summer Sale', path: '/campaigns/1' },
+    { type: 'recipe', name: 'Summer Sale', path: '/recipes/1' },
   ].filter(item => 
     item.name.toLowerCase().includes(query.toLowerCase())
   );

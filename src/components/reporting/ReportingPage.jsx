@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent } from '../ui/Card';
 import { RevenueOverview } from './graphs/RevenueOverview';
 import { ClientMetrics } from './graphs/ClientMetrics';
-import { CampaignPerformance } from './graphs/CampaignPerformance';
+import { RecipePerformance } from './graphs/RecipePerformance';
 import { SalesBreakdown } from './graphs/SalesBreakdown';
 import { DateRangePicker } from './DateRangePicker';
 
@@ -38,13 +38,13 @@ export function ReportingPage() {
             </CardContent>
           </Card>
 
-          {/* Campaign Performance */}
+          {/* Recipe Performance */}
           <Card>
             <CardHeader>
-              <h2 className="text-gray-900 dark:text-white text-lg font-semibold">Campaign Performance</h2>
+              <h2 className="text-gray-900 dark:text-white text-lg font-semibold">Recipe Performance</h2>
             </CardHeader>
             <CardContent>
-              <CampaignPerformance dateRange={dateRange} />
+              <RecipePerformance dateRange={dateRange} />
             </CardContent>
           </Card>
 

@@ -19,16 +19,16 @@ const initialFormData = {
   }
 };
 
-export function CampaignModal({ isOpen, onClose, onSubmit, campaign }) {
+export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
   const [formData, setFormData] = useState(initialFormData);
 
   useEffect(() => {
-    if (campaign) {
-      setFormData(campaign);
+    if (recipe) {
+      setFormData(recipe);
     } else {
       setFormData(initialFormData);
     }
-  }, [campaign]);
+  }, [recipe]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ export function CampaignModal({ isOpen, onClose, onSubmit, campaign }) {
     }
 
     onSubmit(formData);
-    toast.success(`Campaign ${campaign ? 'updated' : 'created'} successfully`);
+    toast.success(`Recipe ${recipe ? 'updated' : 'created'} successfully`);
     onClose();
   };
 
@@ -56,7 +56,7 @@ export function CampaignModal({ isOpen, onClose, onSubmit, campaign }) {
           <Card>
             <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-800">
               <Dialog.Title className="text-lg font-semibold text-gray-900 dark:text-white">
-                {campaign ? 'Edit Campaign' : 'Create Campaign'}
+                {recipe ? 'Edit Recipe' : 'Create Recipe'}
               </Dialog.Title>
               <button
                 onClick={onClose}
@@ -72,7 +72,7 @@ export function CampaignModal({ isOpen, onClose, onSubmit, campaign }) {
               <div className="p-6 space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Campaign Name *
+                    Recipe Name *
                   </label>
                   <input
                     type="text"
@@ -186,7 +186,7 @@ export function CampaignModal({ isOpen, onClose, onSubmit, campaign }) {
                   type="submit"
                   className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-light rounded-lg transition-colors"
                 >
-                  {campaign ? 'Update Campaign' : 'Create Campaign'}
+                  {recipe ? 'Update Recipe' : 'Create Recipe'}
                 </button>
               </div>
             </form>

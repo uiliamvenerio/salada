@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
-import { CampaignsList } from './CampaignsList';
-import { CampaignModal } from './CampaignModal';
-import { CampaignStats } from './RecipeStats';
+import { RecipesList } from './RecipesList';
+import { RecipeModal } from './RecipeModal';
+import { RecipeStats } from './RecipeStats';
 
-const initialCampaigns = [
+const initialRecipes = [
   {
     id: 1,
     name: 'Summer Sale 2023',
@@ -59,44 +59,44 @@ const initialCampaigns = [
   }
 ];
 
-export function CampaignsPage() {
-  const [campaigns, setCampaigns] = useState(initialCampaigns);
+export function RecipesPage() {
+  const [recipes, setRecipes] = useState(initialRecipes);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCampaign, setSelectedCampaign] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [filters, setFilters] = useState({
     status: 'all',
     type: 'all',
     search: ''
   });
 
-  const handleCreateCampaign = (campaign) => {
-    setCampaigns([...campaigns, { ...campaign, id: Date.now() }]);
+  const handleCreateRecipe = (recipe) => {
+    setRecipes([...recipes, { ...recipe, id: Date.now() }]);
   };
 
-  const handleUpdateCampaign = (updatedCampaign) => {
-    setCampaigns(campaigns.map(c => 
-      c.id === updatedCampaign.id ? updatedCampaign : c
+  const handleUpdateRecipe = (updatedRecipe) => {
+    setRecipes(recipes.map(c => 
+      c.id === updatedRecipe.id ? updatedRecipe : c
     ));
   };
 
-  const handleDeleteCampaign = (id) => {
-    setCampaigns(campaigns.filter(c => c.id !== id));
+  const handleDeleteRecipe = (id) => {
+    setRecipes(recipes.filter(c => c.id !== id));
   };
 
-  const filteredCampaigns = campaigns.filter(campaign => {
-    if (filters.status !== 'all' && campaign.status !== filters.status) return false;
-    if (filters.type !== 'all' && campaign.type !== filters.type) return false;
-    if (filters.search && !campaign.name.toLowerCase().includes(filters.search.toLowerCase())) return false;
+  const filteredRecipes = recipes.filter(recipe => {
+    if (filters.status !== 'all' && recipe.status !== filters.status) return false;
+    if (filters.type !== 'all' && recipe.type !== filters.type) return false;
+    if (filters.search && !recipe.name.toLowerCase().includes(filters.search.toLowerCase())) return false;
     return true;
   });
 
   // Calculate total metrics
-  const totalMetrics = campaigns.reduce((acc, campaign) => {
-    if (campaign.type === 'email') {
-      acc.emailsSent += campaign.metrics.sent || 0;
-      acc.conversions += campaign.metrics.converted || 0;
+  const totalMetrics = recipes.reduce((acc, recipe) => {
+    if (recipe.type === 'email') {
+      acc.emailsSent += recipe.metrics.sent || 0;
+      acc.conversions += recipe.metrics.converted || 0;
     }
-    acc.spent += campaign.spent || 0;
+    acc.spent += recipe.spent || 0;
     return acc;
   }, { emailsSent: 0, conversions: 0, spent: 0 });
 
@@ -104,29 +104,29 @@ export function CampaignsPage() {
     <main className="flex-1 min-w-0 overflow-auto">
       <div className="max-w-[1440px] mx-auto animate-fade-in">
         <div className="flex flex-wrap items-center justify-between gap-4 p-4">
-          <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Campaigns</h1>
+          <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Recipes</h1>
           <Button onClick={() => {
-            setSelectedCampaign(null);
+            setSelectedRecipe(null);
             setIsModalOpen(true);
           }}>
-            Create Campaign
+            Create Recipe
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-          <CampaignStats
+          <RecipeStats
             title="Total Emails Sent"
             value={totalMetrics.emailsSent.toLocaleString()}
             trend="+12.5%"
             description="Compared to last month"
           />
-          <CampaignStats
+          <RecipeStats
             title="Total Conversions"
             value={totalMetrics.conversions.toLocaleString()}
             trend="+8.2%"
             description="Compared to last month"
           />
-          <CampaignStats
+          <RecipeStats
             title="Total Spent"
             value={`$${totalMetrics.spent.toLocaleString()}`}
             trend="+15.3%"
@@ -140,7 +140,7 @@ export function CampaignsPage() {
               <div className="flex flex-wrap items-center gap-4">
                 <input
                   type="text"
-                  placeholder="Search campaigns..."
+                  placeholder="Search recipes..."
                   value={filters.search}
                   onChange={(e) => setFilters({ ...filters, search: e.target.value })}
                   className="flex-1 min-w-[200px] px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-hover text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/20 focus:border-primary"
@@ -167,27 +167,27 @@ export function CampaignsPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <CampaignsList
-                campaigns={filteredCampaigns}
-                onEdit={(campaign) => {
-                  setSelectedCampaign(campaign);
+              <RecipesList
+                recipes={filteredRecipes}
+                onEdit={(recipe) => {
+                  setSelectedRecipe(recipe);
                   setIsModalOpen(true);
                 }}
-                onDelete={handleDeleteCampaign}
+                onDelete={handleDeleteRecipe}
               />
             </CardContent>
           </Card>
         </div>
       </div>
 
-      <CampaignModal
+      <RecipeModal
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
-          setSelectedCampaign(null);
+          setSelectedRecipe(null);
         }}
-        onSubmit={selectedCampaign ? handleUpdateCampaign : handleCreateCampaign}
-        campaign={selectedCampaign}
+        onSubmit={selectedRecipe ? handleUpdateRecipe : handleCreateRecipe}
+        recipe={selectedRecipe}
       />
     </main>
   );
