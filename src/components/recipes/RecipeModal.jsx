@@ -36,6 +36,7 @@ export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
   const [currentIngredient, setCurrentIngredient] = useState({
     name: '',
     quantity: '',
+    unit: 'g',
     correctionFactor: ''
   });
   const [currentStep, setCurrentStep] = useState('');
@@ -76,7 +77,7 @@ export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
       ...formData,
       ingredients: [...formData.ingredients, currentIngredient]
     });
-    setCurrentIngredient({ name: '', quantity: '', correctionFactor: '' });
+    setCurrentIngredient({ name: '', quantity: '', unit: 'g', correctionFactor: '' });
   };
 
   const addPreparationStep = () => {
@@ -216,6 +217,14 @@ export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
                         onChange={(e) => setCurrentIngredient({ ...currentIngredient, quantity: e.target.value })}
                         className="w-24 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-hover text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary"
                       />
+                      <select
+                        value={currentIngredient.unit}
+                        onChange={(e) => setCurrentIngredient({ ...currentIngredient, unit: e.target.value })}
+                        className="w-20 px-2 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-hover text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                      >
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
                       <input
                         type="number"
                         step="0.01"
@@ -235,7 +244,7 @@ export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
                     <div className="border rounded-lg divide-y dark:divide-gray-700">
                       {formData.ingredients.map((ingredient, index) => (
                         <div key={index} className="p-2 flex justify-between items-center">
-                          <span>{ingredient.name} - {ingredient.quantity}{formData.measurementUnit}</span>
+                          <span>{ingredient.name} - {ingredient.quantity}{ingredient.unit}</span>
                           <button
                             type="button"
                             onClick={() => setFormData({
