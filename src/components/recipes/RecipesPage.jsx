@@ -8,12 +8,10 @@ import { RecipeStats } from './RecipeStats';
 const initialRecipes = [
   {
     id: 1,
-    name: 'Summer Sale 2023',
-    status: 'active',
-    type: 'email',
-    audience: 'all-clients',
-    startDate: '2023-12-01',
-    endDate: '2023-12-31',
+    name: 'Carne de Panela',
+    category: 'Prato Principal', 
+    yield: 30,
+    prepTime: 60,
     budget: 5000,
     spent: 2500,
     metrics: {
@@ -25,12 +23,10 @@ const initialRecipes = [
   },
   {
     id: 2,
-    name: 'New Product Launch',
-    status: 'scheduled',
-    type: 'social',
-    audience: 'premium-clients',
-    startDate: '2024-01-15',
-    endDate: '2024-02-15',
+    name: 'Carne Moída com Molho de Tomate',
+    category: 'Prato Principal', 
+    yield: 30,
+    prepTime: 60,
     budget: 10000,
     spent: 0,
     metrics: {
@@ -42,12 +38,10 @@ const initialRecipes = [
   },
   {
     id: 3,
-    name: 'Black Friday',
-    status: 'completed',
-    type: 'email',
-    audience: 'all-clients',
-    startDate: '2023-11-20',
-    endDate: '2023-11-27',
+    name: 'Iscas de Porco com Cebola',
+    category: 'Prato Principal', 
+    yield: 30,
+    prepTime: 60,
     budget: 8000,
     spent: 8000,
     metrics: {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { format } from 'date-fns';
 import { Menu } from '@headlessui/react';
 import clsx from 'clsx';
 
@@ -9,12 +8,11 @@ export function RecipesList({ recipes, onEdit, onDelete }) {
       <table className="w-full min-w-[800px]">
         <thead>
           <tr className="border-b border-gray-100 dark:border-gray-800">
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Recipe</th>
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Type</th>
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Status</th>
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Progress</th>
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Dates</th>
-            <th className="text-right py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Actions</th>
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Receita</th>
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Categoria</th>
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Rendimento</th>
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Tempo de Preparo</th>
+            <th className="text-right py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -25,44 +23,20 @@ export function RecipesList({ recipes, onEdit, onDelete }) {
             >
               <td className="py-3 px-4">
                 <p className="text-sm font-medium text-gray-900 dark:text-white">{recipe.name}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Budget: ${recipe.budget.toLocaleString()}</p>
               </td>
               <td className="py-3 px-4">
                 <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                  {recipe.type}
+                  {recipe.category}
                 </span>
-              </td>
-              <td className="py-3 px-4">
-                <span className={clsx(
-                  'inline-flex items-center px-2 py-1 rounded-full text-xs font-medium',
-                  {
-                    'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400': recipe.status === 'active',
-                    'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400': recipe.status === 'scheduled',
-                    'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300': recipe.status === 'completed'
-                  }
-                )}>
-                  {recipe.status}
-                </span>
-              </td>
-              <td className="py-3 px-4">
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-primary rounded-full"
-                      style={{ width: `${(recipe.spent / recipe.budget) * 100}%` }}
-                    />
-                  </div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {Math.round((recipe.spent / recipe.budget) * 100)}%
-                  </span>
-                </div>
               </td>
               <td className="py-3 px-4">
                 <p className="text-sm text-gray-900 dark:text-white">
-                  {format(new Date(recipe.startDate), 'MMM d, yyyy')}
+                  {recipe.yield ? `${recipe.yield} porções` : '-'}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {format(new Date(recipe.endDate), 'MMM d, yyyy')}
+              </td>
+              <td className="py-3 px-4">
+                <p className="text-sm text-gray-900 dark:text-white">
+                  {recipe.prepTime ? `${recipe.prepTime} min` : '-'}
                 </p>
               </td>
               <td className="py-3 px-4 text-right">
@@ -84,7 +58,7 @@ export function RecipesList({ recipes, onEdit, onDelete }) {
                               active ? 'bg-gray-100 dark:bg-dark-hover' : ''
                             )}
                           >
-                            Edit Recipe
+                            Editar Receita
                           </button>
                         )}
                       </Menu.Item>
@@ -97,7 +71,7 @@ export function RecipesList({ recipes, onEdit, onDelete }) {
                               active ? 'bg-gray-100 dark:bg-dark-hover' : ''
                             )}
                           >
-                            Delete Recipe
+                            Excluir Receita
                           </button>
                         )}
                       </Menu.Item>

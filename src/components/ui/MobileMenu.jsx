@@ -5,9 +5,8 @@ import clsx from 'clsx';
 export function MobileMenu({ isOpen, onClose, currentPage, onNavigate }) {
   const menuItems = [
     { id: 'dashboard', label: 'Home', icon: HomeIcon },
-    { id: 'clients', label: 'Clients', icon: ClientsIcon },
-    { id: 'conversations', label: 'Conversations', icon: ConversationsIcon },
-    { id: 'recipes', label: 'Recipes', icon: RecipesIcon },
+    { id: 'clients', label: 'Clientes', icon: ClientsIcon },
+    { id: 'recipes', label: 'Receitas', icon: RecipesIcon },
     { id: 'reporting', label: 'Reporting', icon: ReportingIcon },
   ];
 
