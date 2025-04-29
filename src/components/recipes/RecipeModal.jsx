@@ -448,17 +448,6 @@ export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Peso Líquido
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.netWeight}
-                      disabled
-                      className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-dark-card text-gray-900 dark:text-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Fator de Correção
                     </label>
                     <input
@@ -467,6 +456,17 @@ export function RecipeModal({ isOpen, onClose, onSubmit, recipe }) {
                       value={formData.correctionFactor}
                       onChange={(e) => setFormData({ ...formData, correctionFactor: parseFloat(e.target.value) })}
                       className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-hover text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      Peso Líquido
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.netWeight}
+                      disabled
+                      className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-dark-card text-gray-900 dark:text-white"
                     />
                   </div>
                 </div>
