@@ -9,6 +9,7 @@ import clsx from 'clsx';
 const menuItems = [
   { id: 'dashboard', icon: House, text: 'Home' },
   { id: 'clients', icon: UsersThree, text: 'Clientes' },
+  { id: 'ingredients', icon: ChatDots, text: 'Ingredientes' },
   { id: 'recipes', icon: Megaphone, text: 'Receitas' },
   { id: 'reporting', icon: ChartPie, text: 'Reporting' }
 ];

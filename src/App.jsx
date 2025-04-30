@@ -4,6 +4,7 @@ import { Header } from './components/ui/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import { ClientsPage } from './components/clients/ClientsPage';
+import { IngredientsPage } from './components/ingredients/IngredientsPage';
 import { RecipesPage } from './components/recipes/RecipesPage';
 import { ReportingPage } from './components/reporting/ReportingPage';
 import { ProfilePage } from './components/profile/ProfilePage';
@@ -40,6 +41,8 @@ export default function App() {
         return <Dashboard />;
       case 'clients':
         return <ClientsPage />;
+      case 'ingredients':
+        return <IngredientsPage />;
       case 'recipes':
         return <RecipesPage />;
       case 'reporting':
