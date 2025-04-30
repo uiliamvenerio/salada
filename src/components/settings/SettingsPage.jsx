@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, CardHeader, CardContent } from '../ui/Card';
 import { GeneralSettings } from './sections/GeneralSettings';
 import { SecuritySettings } from './sections/SecuritySettings';
 import { IntegrationSettings } from './sections/IntegrationSettings';
+import { NutritionalTablesSettings } from './sections/NutritionalTablesSettings';
 
 export function SettingsPage() {
   return (
@@ -15,6 +15,7 @@ export function SettingsPage() {
         <div className="p-4 space-y-4">
           <GeneralSettings />
           <SecuritySettings />
+          <NutritionalTablesSettings />
           <IntegrationSettings />
         </div>
       </div>
