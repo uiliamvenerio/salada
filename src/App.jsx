@@ -4,6 +4,7 @@ import { Header } from './components/ui/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import { ClientsPage } from './components/clients/ClientsPage';
+import { AddClientPage } from './components/clients/AddClientPage';
 import { IngredientsPage } from './components/ingredients/IngredientsPage';
 import { RecipesPage } from './components/recipes/RecipesPage';
 import { ReportingPage } from './components/reporting/ReportingPage';
@@ -11,36 +12,35 @@ import { ProfilePage } from './components/profile/ProfilePage';
 import { SettingsPage } from './components/settings/SettingsPage';
 import { MobileMenu } from './components/ui/MobileMenu';
 
-/**
- * Main application component that handles routing and layout.
- * Manages the sidebar state and current page navigation.
- */
 export default function App() {
-  // State for mobile sidebar visibility
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
-  // Current active page/route
   const [currentPage, setCurrentPage] = useState('dashboard');
+  const [isAddingClient, setIsAddingClient] = useState(false);
 
-  /**
-   * Handles navigation between pages and closes mobile sidebar
-   * @param {string} page - The page identifier to navigate to
-   */
   const handleMenuItemClick = (page) => {
     setCurrentPage(page);
     setIsSidebarOpen(false);
+    setIsAddingClient(false);
   };
 
-  /**
-   * Renders the appropriate page component based on current route
-   * @returns {React.ReactNode} The page component to render
-   */
+  const handleAddClient = () => {
+    setIsAddingClient(true);
+  };
+
+  const handleBackToClients = () => {
+    setIsAddingClient(false);
+  };
+
   const renderPage = () => {
+    if (currentPage === 'clients' && isAddingClient) {
+      return <AddClientPage onBack={handleBackToClients} />;
+    }
+
     switch (currentPage) {
       case 'dashboard':
         return <Dashboard />;
       case 'clients':
-        return <ClientsPage />;
+        return <ClientsPage onAddClient={handleAddClient} />;
       case 'ingredients':
         return <IngredientsPage />;
       case 'recipes':

@@ -3,7 +3,6 @@ import { Card, CardHeader, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { ClientFilters } from './ClientFilters';
 import { ClientTable } from './ClientTable';
-import { AddClientModal } from './AddClientModal';
 
 const initialClients = [
   {
@@ -26,9 +25,8 @@ const initialClients = [
   }
 ];
 
-export function ClientsPage() {
+export function ClientsPage({ onAddClient }) {
   const [clients, setClients] = useState(initialClients);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [filters, setFilters] = useState({
     search: '',
     sortBy: 'name'
@@ -57,7 +55,7 @@ export function ClientsPage() {
       <div className="max-w-[1440px] mx-auto animate-fade-in">
         <div className="flex flex-wrap items-center justify-between gap-4 p-4">
           <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Clientes</h1>
-          <Button onClick={() => setIsAddModalOpen(true)}>
+          <Button onClick={onAddClient}>
             Novo Cliente
           </Button>
         </div>
@@ -73,12 +71,6 @@ export function ClientsPage() {
           </Card>
         </div>
       </div>
-
-      <AddClientModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        onAdd={handleAddClient}
-      />
     </main>
   );
 }
