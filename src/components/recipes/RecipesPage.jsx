@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { RecipesList } from './RecipesList';
-import { RecipeModal } from './RecipeModal';
 import { RecipeStats } from './RecipeStats';
+import { RecipeForm } from './RecipeForm';
 
 const initialRecipes = [
   {
@@ -55,7 +55,7 @@ const initialRecipes = [
 
 export function RecipesPage() {
   const [recipes, setRecipes] = useState(initialRecipes);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddingRecipe, setIsAddingRecipe] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [filters, setFilters] = useState({
     status: 'all',
@@ -65,12 +65,14 @@ export function RecipesPage() {
 
   const handleCreateRecipe = (recipe) => {
     setRecipes([...recipes, { ...recipe, id: Date.now() }]);
+    setIsAddingRecipe(false);
   };
 
   const handleUpdateRecipe = (updatedRecipe) => {
     setRecipes(recipes.map(c => 
       c.id === updatedRecipe.id ? updatedRecipe : c
     ));
+    setSelectedRecipe(null);
   };
 
   const handleDeleteRecipe = (id) => {
@@ -94,15 +96,31 @@ export function RecipesPage() {
     return acc;
   }, { emailsSent: 0, conversions: 0, spent: 0 });
 
+  if (isAddingRecipe) {
+    return (
+      <RecipeForm
+        onSubmit={handleCreateRecipe}
+        onCancel={() => setIsAddingRecipe(false)}
+      />
+    );
+  }
+
+  if (selectedRecipe) {
+    return (
+      <RecipeForm
+        recipe={selectedRecipe}
+        onSubmit={handleUpdateRecipe}
+        onCancel={() => setSelectedRecipe(null)}
+      />
+    );
+  }
+
   return (
     <main className="flex-1 min-w-0 overflow-auto">
       <div className="max-w-[1440px] mx-auto animate-fade-in">
         <div className="flex flex-wrap items-center justify-between gap-4 p-4">
           <h1 className="text-gray-900 dark:text-white text-2xl md:text-3xl font-bold">Receitas</h1>
-          <Button onClick={() => {
-            setSelectedRecipe(null);
-            setIsModalOpen(true);
-          }}>
+          <Button onClick={() => setIsAddingRecipe(true)}>
             Nova Receita
           </Button>
         </div>
@@ -163,26 +181,13 @@ export function RecipesPage() {
             <CardContent>
               <RecipesList
                 recipes={filteredRecipes}
-                onEdit={(recipe) => {
-                  setSelectedRecipe(recipe);
-                  setIsModalOpen(true);
-                }}
+                onEdit={setSelectedRecipe}
                 onDelete={handleDeleteRecipe}
               />
             </CardContent>
           </Card>
         </div>
       </div>
-
-      <RecipeModal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          setSelectedRecipe(null);
-        }}
-        onSubmit={selectedRecipe ? handleUpdateRecipe : handleCreateRecipe}
-        recipe={selectedRecipe}
-      />
     </main>
   );
 }
